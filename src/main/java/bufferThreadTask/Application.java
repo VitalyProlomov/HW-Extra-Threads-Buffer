@@ -1,13 +1,19 @@
+package bufferThreadTask;
+
 public class Application {
     public static void main(String[] args) throws InterruptedException {
         Buffer buffer = new Buffer();
-        Consumer consumer = new Consumer(buffer);
         Producer producer = new Producer(buffer);
+        Consumer consumer = new Consumer(buffer);
+
         producer.start();
         consumer.start();
-        Thread.currentThread().sleep(1000);
-        // How to use join() correctly?
+        Thread.sleep(100);
+
         producer.interrupt();
         consumer.interrupt();
+
+        producer.join();
+        consumer.join();
     }
 }
