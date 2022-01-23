@@ -20,7 +20,7 @@ public class Buffer {
         buffer.push(i);
     }
 
-    public Integer pop() throws EmptyStackException {
+    public Integer pop() {
         return buffer.pop();
     }
 
